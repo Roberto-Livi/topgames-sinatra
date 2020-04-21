@@ -1,6 +1,15 @@
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in topgamesSIN.gemspec
-gemspec
-
-gem "rake", "~> 12.0"
+gem 'sinatra'
+gem 'activerecord', '~> 6.0.0', :require => 'active_record'
+gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
+gem 'rake'
+gem 'require_all'
+gem 'sqlite3'
+gem 'thin'
+gem 'shotgun'
+gem 'pry'
+gem 'bcrypt'
+gem "tux"
+gem "nokogiri"
+gem "httparty"
