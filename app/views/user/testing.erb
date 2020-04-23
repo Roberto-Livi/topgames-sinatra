@@ -1,0 +1,24 @@
+<h1>Users</h1>
+
+<p>
+<% @users.all.find {|user| 
+if user.username == "lo"
+    user.username}  %>
+
+
+<br>
+<% end %>
+</p>
+
+<h1>Games</h1>
+
+<p>
+<% @games.all.each do |game| %>
+<p>
+First Game: <%= game.first_game %>
+<br>
+User id: <%= game.user_id %>
+
+</p>
+<% end %>
+</p>

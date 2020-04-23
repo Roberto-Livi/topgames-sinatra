@@ -37,7 +37,12 @@ class ApplicationController < Sinatra::Base
 
   get '/login' do
     if Helpers.is_logged_in?(session)
-      redirect "/users_games_selection"
+      user = Helpers.current_user(session)
+      params[:user_id] = user.id
+      Game.all.find do |game|
+        game.user_id = user.id
+      end
+      redirect "/users_games_selection/#{game.id}"
     else
       erb :"/user/login"
     end
@@ -45,10 +50,13 @@ class ApplicationController < Sinatra::Base
 
   post '/login' do
     user = User.find_by(:username => params[:username])
+    session[:user_id] = user.id
 
     if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      redirect "/users_games_selection"
+    g = Game.all.find {|game|
+        game.user_id == user.id}
+
+      redirect "/users_games_selection/#{g.id}"
     else
       redirect "/login"
     end
@@ -76,13 +84,21 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/users_games_selection/:id' do
+    @games = Game.find(params[:id])
     if Helpers.is_logged_in?(session)
-      @games = Game.find(params[:id])
       erb :"/games/users_games_selection"
     else
       redirect "/login"
     end
   end
 
+  get '/logout' do
+    if Helpers.is_logged_in?(session)
+      session.clear
+      redirect "/login"
+    else
+      redirect "/"
+    end
+  end
 
 end
