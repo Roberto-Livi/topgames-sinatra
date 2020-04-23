@@ -75,11 +75,9 @@ class ApplicationController < Sinatra::Base
     end
   end
 
-  get '/users_games_selection' do
-    @user = User.find_by(:username => params[:username])
+  get '/users_games_selection/:id' do
     if Helpers.is_logged_in?(session)
       @games = Game.find(params[:id])
-
       erb :"/games/users_games_selection"
     else
       redirect "/login"

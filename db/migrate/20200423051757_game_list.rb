@@ -6,6 +6,7 @@ class GameList < ActiveRecord::Migration
       t.string :third_game
       t.string :fourth_game
       t.string :fifth_game
+      t.integer :user_id
     end
   end
 end
