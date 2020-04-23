@@ -71,7 +71,7 @@ class ApplicationController < Sinatra::Base
     else
       game = Game.create(:first_game => params[:first_game], :second_game => params[:second_game], :third_game => params[:third_game], :fourth_game => params[:fourth_game], :fifth_game => params[:fifth_game], :user_id => params[:user_id])
 
-      redirect "/users_games_selection"
+      redirect "/users_games_selection/#{game.id}"
     end
   end
 
