@@ -31,21 +31,33 @@ class ApplicationController < Sinatra::Base
 
     user = User.create(:username => params[:username], :email => params[:email], :password => params[:password])
     session[:user_id] = user.id
+
     redirect "/select_games"
   end
 
   get '/login' do
-    erb :"/user/login"
+    if Helpers.is_logged_in?(session)
+      redirect "/users_games_selection"
+    else
+      erb :"/user/login"
+    end
   end
 
   post '/login' do
-    redirect "/index"
+    user = User.find_by(:username => params[:username])
+
+    if user && user.authenticate(params[:password])
+      session[:user_id] = user.id
+      redirect "/users_games_selection"
+    else
+      redirect "/login"
+    end
   end
 
   get '/select_games' do
     @user = User.find_by(:username => params[:username])
     if Helpers.is_logged_in?(session)
-      erb :"/user/register_fav_games"
+      erb :"/games/register_fav_games"
     else
       redirect "/"
     end
@@ -57,13 +69,20 @@ class ApplicationController < Sinatra::Base
     if params[:first_game].empty? && params[:second_game].empty? && params[:third_game].empty? && params[:fourth_game].empty? && params[:fifth_game].empty?
       redirect "/select_games"
     else
-      @game_one = Game.create(:name => params[:first_game], :user_id => params[:user_id])
-      @game_two = Game.create(:name => params[:second_game], :user_id => params[:user_id])
-      @game_three = Game.create(:name => params[:third_game], :user_id => params[:user_id])
-      @game_four = Game.create(:name => params[:fourth_game], :user_id => params[:user_id])
-      @game_five = Game.create(:name => params[:fifth_game], :user_id => params[:user_id])
+      game = Game.create(:first_game => params[:first_game], :second_game => params[:second_game], :third_game => params[:third_game], :fourth_game => params[:fourth_game], :fifth_game => params[:fifth_game], :user_id => params[:user_id])
 
-      erb :"/user/users_games_selection"
+      redirect "/users_games_selection"
+    end
+  end
+
+  get '/users_games_selection' do
+    @user = User.find_by(:username => params[:username])
+    if Helpers.is_logged_in?(session)
+      @games = Game.find(params[:id])
+
+      erb :"/games/users_games_selection"
+    else
+      redirect "/login"
     end
   end
 
