@@ -15,7 +15,8 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/index' do
-    erb :"/user/index"
+    @users = User.all
+    erb :"/index"
   end
 
   get '/signup' do
@@ -39,10 +40,10 @@ class ApplicationController < Sinatra::Base
     if Helpers.is_logged_in?(session)
       user = Helpers.current_user(session)
       params[:user_id] = user.id
-      Game.all.find do |game|
-        game.user_id = user.id
-      end
-      redirect "/users_games_selection/#{game.id}"
+    g = Game.all.find {|game|
+        game.user_id = user.id}
+
+      redirect "/users_games_selection/#{g.id}"
     else
       erb :"/user/login"
     end
@@ -90,6 +91,10 @@ class ApplicationController < Sinatra::Base
     else
       redirect "/login"
     end
+  end
+
+  get '/update' do
+    erb :"/games/update_games_list"
   end
 
   delete '/logout' do
