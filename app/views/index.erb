@@ -1,6 +1,22 @@
 <h1>All Users Posts</h1>
 
+<button type="button">
 
-<% @users.each do |user|  %>
-<%= user.username  %>
+<a href="/users_games_selection/#{@user.games[0].id}">Back To Your Games Selection</a>
+</button>
+
+<% @users.each do |u|  %>
+<p>
+<h4>Username: <%= u.username%></h4>
+<br>
+1) <%= u.games[0][:first_game] %>
+<br>
+2) <%= u.games[0][:second_game] %>
+<br>
+3) <%= u.games[0][:third_game] %>
+<br>
+4) <%= u.games[0][:fourth_game] %>
+<br>
+5) <%= u.games[0][:fifth_game] %>
+</p>
 <% end %>

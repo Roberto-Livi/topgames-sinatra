@@ -15,6 +15,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/index' do
+    @user = User.find_by(:username => params[:username])
     @users = User.all
     erb :"/index"
   end
