@@ -1,0 +1,37 @@
+<h1>Update Your Games List</h1>
+
+<form action="/users_games_selection/<%= @games.id %>" method="POST">
+<input id="hidden" type="hidden" name="_method" value="patch">
+
+<p>
+<label>1</label>
+<input type="text" name="first_game" id="update_game" value="<%= @games.first_game %>">
+</p>
+<br>
+
+<p>
+<label>2</label>
+<input type="text" name="second_game" id="update_game" value="<%= @games.second_game %>">
+</p>
+<br>
+
+<p>
+<label>3</label>
+<input type="text" name="third_game" id="update_game" value="<%= @games.third_game %>">
+</p>
+<br>
+
+<p>
+<label>4</label>
+<input type="text" name="fourth_game" id="update_game" value="<%= @games.fourth_game %>">
+</p>
+<br>
+
+<p>
+<label>5</label>
+<input type="text" name="fifth_game" id="update_game" value="<%= @games.fifth_game %>">
+</p>
+<br>
+
+<input type="submit" value="Update List">
+</form>
