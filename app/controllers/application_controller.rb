@@ -25,7 +25,7 @@ class ApplicationController < Sinatra::Base
     params[:user_id] = user.id
     @id = user.games[0].id
     @users = User.all
-    
+
     erb :"/index"
   end
 
