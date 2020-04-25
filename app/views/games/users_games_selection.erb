@@ -1,14 +1,35 @@
-<%= @games.first_game %>
+<h1><%= @user.username %>s Top 5 Games </h1>
+<p></p>
+
+<div>
+<h3>1) <%= @games.first_game %></h3>
+</div>
 <br>
-<%= @games.second_game %>
+
+<div>
+<h3>2) <%= @games.second_game %></h3>
+</div>
 <br>
-<%= @games.third_game %>
+
+<div>
+<h3>3) <%= @games.third_game %></h3>
+</div>
 <br>
-<%= @games.fourth_game %>
+
+<div>
+<h3>4) <%= @games.fourth_game %></h3>
+</div>
 <br>
-<%= @games.fifth_game %>
+
+<div>
+<h3>5) <%= @games.fifth_game %></h3>
+</div>
 <br>
 <br>
+
+<p>
+<a href="/index"><h5>Click Here to see other users Top 5 Games</h5></a>
+</p>
 
 <p>
 <form action="/logout" method="POST">
@@ -16,3 +37,6 @@
 <input type="submit" value="Logout">
 </form>
 </p>
+
+
+
