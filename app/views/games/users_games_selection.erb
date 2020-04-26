@@ -1,54 +1,62 @@
 <h1><%= @user.username %>'s Top 5 Games </h1>
 <p></p>
 
+<% @user.games.each do |g| %>
 <div>
-<h2>List Name: <%= @games.list_name %></h2>
+<h2>List Name: <%= g.list_name %></h2>
 </div>
 <br>
 
 <div>
-<h3>1) <%= @games.first_game %></h3>
+<h3>1) <%= g.first_game %></h3>
 </div>
 <br>
 
 <div>
-<h3>2) <%= @games.second_game %></h3>
+<h3>2) <%= g.second_game %></h3>
 </div>
 <br>
 
 <div>
-<h3>3) <%= @games.third_game %></h3>
+<h3>3) <%= g.third_game %></h3>
 </div>
 <br>
 
 <div>
-<h3>4) <%= @games.fourth_game %></h3>
+<h3>4) <%= g.fourth_game %></h3>
 </div>
 <br>
 
 <div>
-<h3>5) <%= @games.fifth_game %></h3>
+<h3>5) <%= g.fifth_game %></h3>
 </div>
+<p></p>
+
+<a href ="/games/<%= g.id %>/update">
+<input type="submit" value="update">
+<p></p>
+</a>
+<% end %>
 <br>
 <br>
 
+<p></p>
 <p>
 <a href="/index"><h5>Click Here to see other users Top 5 Games</h5></a>
 </p>
+
+<p>
+<a href="/new_games_list">
+<input type="submit" value="New List">
+</a>
+</p>
+
 
 <p>
 <form action="/logout" method="POST">
 <input id="hidden" type="hidden" name="_method" value="delete">
 <input type="submit" value="Logout">
 </form>
-</p>
-
-<br>
-
-<p>
-<button type="button">
-<a href="/games/<%= @games.id %>/update">Update List</a>
-</button>
 </p>
 
 
