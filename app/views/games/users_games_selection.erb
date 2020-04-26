@@ -30,12 +30,20 @@
 <div>
 <h3>5) <%= g.fifth_game %></h3>
 </div>
-<p></p>
 
+<p></p>
 <a href ="/games/<%= g.id %>/update">
 <input type="submit" value="update">
 <p></p>
 </a>
+
+<p></p>
+<form action="/games/<%= g.id %>/delete" method="POST">
+<input type="submit" value="delete">
+<p></p>
+</a>
+</form>
+
 <% end %>
 <br>
 <br>

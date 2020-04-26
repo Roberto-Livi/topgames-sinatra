@@ -158,6 +158,17 @@ class ApplicationController < Sinatra::Base
     redirect "/users_games_selection/#{games.id}"
   end
 
+  post '/games/:id/delete' do
+    if Helpers.is_logged_in?(session)
+      game = Game.find(params[:id])
+      game.destroy
+
+      redirect "/index"
+    else
+      redirect "/login"
+    end
+  end
+
   delete '/logout' do
     if Helpers.is_logged_in?(session)
       session.clear
