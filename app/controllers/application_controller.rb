@@ -21,11 +21,15 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/index' do
-    @user = Helpers.current_user(session)
-    params[:user_id] = @user.id
-    @games = Game.all
+    if Helpers.is_logged_in?(session)
+      @user = Helpers.current_user(session)
+      params[:user_id] = @user.id
+      @games = Game.all
 
-    erb :"/index"
+      erb :"/index"
+    else
+      redirect "/login"
+    end
   end
 
   get '/signup' do
@@ -160,10 +164,12 @@ class ApplicationController < Sinatra::Base
 
   post '/games/:id/delete' do
     if Helpers.is_logged_in?(session)
+      user = Helpers.current_user(session)
+      params[:user_id] = user.id
       game = Game.find(params[:id])
       game.destroy
 
-      redirect "/index"
+      redirect "/users_games_selection/#{user.id}"
     else
       redirect "/login"
     end
