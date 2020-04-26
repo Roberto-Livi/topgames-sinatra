@@ -64,10 +64,10 @@ class ApplicationController < Sinatra::Base
 
   post '/login' do
     user = User.find_by(:username => params[:username])
-    session[:user_id] = user.id
+    # session[:user_id] = user.id
 
     if user && user.authenticate(params[:password])
-    g = Game.all.find {|game|
+      g = Game.all.find {|game|
         game.user_id == user.id}
 
       redirect "/users_games_selection/#{g.id}"
@@ -88,10 +88,10 @@ class ApplicationController < Sinatra::Base
   post '/select_games' do
     user = Helpers.current_user(session)
     params[:user_id] = user.id
-    if params[:first_game].empty? && params[:second_game].empty? && params[:third_game].empty? && params[:fourth_game].empty? && params[:fifth_game].empty?
+    if params[:first_game].empty? && params[:second_game].empty? && params[:third_game].empty? && params[:fourth_game].empty? && params[:fifth_game].empty? && params[:list_name].empty?
       redirect "/select_games"
     else
-      game = Game.create(:first_game => params[:first_game], :second_game => params[:second_game], :third_game => params[:third_game], :fourth_game => params[:fourth_game], :fifth_game => params[:fifth_game], :user_id => params[:user_id])
+      game = Game.create(:first_game => params[:first_game], :second_game => params[:second_game], :third_game => params[:third_game], :fourth_game => params[:fourth_game], :fifth_game => params[:fifth_game], :user_id => params[:user_id], :list_name => params[:list_name])
 
       redirect "/users_games_selection/#{game.id}"
     end
@@ -129,7 +129,7 @@ class ApplicationController < Sinatra::Base
       end
     end
 
-    games.update(:first_game => params[:first_game], :second_game => params[:second_game], :third_game => params[:third_game], :fourth_game => params[:fourth_game], :fifth_game => params[:fifth_game],)
+    games.update(:first_game => params[:first_game], :second_game => params[:second_game], :third_game => params[:third_game], :fourth_game => params[:fourth_game], :fifth_game => params[:fifth_game], :list_name => params[:list_name])
     games.save
 
     redirect "/users_games_selection/#{games.id}"
