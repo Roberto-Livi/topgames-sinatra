@@ -2,23 +2,23 @@
 
 <button type="button">
 
-<a href="/users_games_selection/<%= @id %>">Back To Your Games Selection</a>
+
+<a href="/users_games_selection/<%= @user.id %>">Back To Your Games Selection</a>
 </button>
 
-<% @users.each do |u|  %>
+<% @games.reverse.each do |g|  %>
 <p>
-<h4>Username: <%= u.username%></h4>
+<h4>Username: <%= User.find_by_id(g.user_id).username%></h4>
 <br>
-1) <%= u.games[0][:first_game] %>
+1) <%= g.first_game %>
 <br>
-2) <%= u.games[0][:second_game] %>
+2) <%= g.second_game %>
 <br>
-3) <%= u.games[0][:third_game] %>
+3) <%= g.third_game %>
 <br>
-4) <%= u.games[0][:fourth_game] %>
+4) <%= g.fourth_game %>
 <br>
-5) <%= u.games[0][:fifth_game] %>
+5) <%= g.fifth_game %>
 </p>
 <% end %>
-
 

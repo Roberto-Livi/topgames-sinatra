@@ -21,10 +21,9 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/index' do
-    user = Helpers.current_user(session)
-    params[:user_id] = user.id
-    @id = user.games[0].id
-    @users = User.all
+    @user = Helpers.current_user(session)
+    params[:user_id] = @user.id
+    @games = Game.all
 
     erb :"/index"
   end
