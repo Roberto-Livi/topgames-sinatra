@@ -1,26 +1,40 @@
-<div style="text-align: center;">
+<div id="welcome">
 <h1>All Users Posts</h1>
 </div>
 
-<button type="button">
+<a href="/users_games_selection/<%= @user.id %>" style="font-family: fantasy; font-size: 17px; color: royalblue;">Back To Your Games Selection</a>
 
-
-<a href="/users_games_selection/<%= @user.id %>">Back To Your Games Selection</a>
-</button>
 
 <% @games.reverse.each do |g|  %>
 <p>
-<h4>Username: <%= User.find_by_id(g.user_id).username%></h4>
+<h4 id="all_lists">Username: <%= User.find_by_id(g.user_id).username%></h4>
 <br>
+
+<div class="game_list">
+<div>
 1) <%= g.first_game %>
+</div>
 <br>
+
+<div>
 2) <%= g.second_game %>
+</div>
 <br>
+
+<div>
 3) <%= g.third_game %>
+</div>
 <br>
+
+<div>
 4) <%= g.fourth_game %>
+</div>
 <br>
+
+<div>
 5) <%= g.fifth_game %>
+</div>
+</div>
 </p>
 <% end %>
 

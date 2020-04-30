@@ -151,7 +151,7 @@ input[type="text"] {
 }
 
 .li {
-  font-size: 30px;
+  font-size: 25px;
   font-family: fantasy;
   background-color: rgb(79, 150, 207);
   border: none;
@@ -190,6 +190,49 @@ input[type="text"] {
   background-color: rgb(204, 184, 235);
 }
 
+#tg_headline {
+  text-align: center;
+  margin-bottom: 50px;
+  border-bottom: 1px solid black;
+}
+
 .game_list {
   font-size: 30px;
+}
+
+#list_height {
+  height: 30px;
+}
+
+.gs_butttons {
+  text-align: center;
+}
+
+.games_headline {
+  text-align: center;
+  margin-bottom: 50px;
+  border-bottom: 1px solid black;
+}
+
+#games_text {
+  font-size: 20px;
+  text-align: center;
+}
+
+#update_list_button {
+  font-size: 15px;
+  font-family: fantasy;
+  background-color: rgb(79, 150, 207);
+  border: none;
+  color: white;
+  padding: 10px 22px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+#all_lists {
+  background-color: rgb(204, 184, 235);
+  font-size: 20px;
+  padding: 15px;
 }

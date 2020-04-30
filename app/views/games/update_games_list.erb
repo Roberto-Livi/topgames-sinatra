@@ -1,7 +1,8 @@
-<div style="text-align: center; margin-bottom: 50px; border-bottom: 1px solid black;">
+<div class="games_headline">
 <h1>Update Your Games List</h1>
 </div>
 
+<div id="games_text">
 <form action="/users_games_selection/<%= @games.id %>" method="POST">
 <input id="hidden" type="hidden" name="_method" value="patch">
 
@@ -42,6 +43,9 @@
 <input type="text" name="fifth_game" id="update_game" value="<%= @games.fifth_game %>">
 </p>
 <br>
+</div>
 
-<input type="submit" value="Update List">
+<div style="text-align: center;">
+<input id="update_list_button" type="submit" value="Update List">
+</div>
 </form>

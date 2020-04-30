@@ -1,7 +1,11 @@
-<div style="text-align: center;">
-<h1><%= @user.username.capitalize %>'s Top 5 Games </h1>
-</div>
+<h1 id="tg_headline"><%= @user.username.capitalize %>'s Top 5 Games </h1>
+
 <p></p>
+<p>
+<a href="/index" style="font-size: 15px;
+  color: royalblue;"><h5>Click Here to see other users Top 5 Games</h5></a>
+</p>
+
 
 <% @user.games.reverse.each do |g| %>
 <div>
@@ -42,7 +46,8 @@
 <p></p>
 <form action="/games/<%= g.id %>/delete" method="POST">
 <input type="submit" value="delete">
-<p></p>
+<p id="list_height"></p>
+
 </a>
 </form>
 
@@ -51,22 +56,21 @@
 <br>
 
 <p></p>
-<p>
-<a href="/index"><h5>Click Here to see other users Top 5 Games</h5></a>
-</p>
 
 <p>
+<div style="text-align: center;">
 <a href="/new_games_list">
-<input class="games_selection_buttons" type="submit" value="New List">
+<input class="login_buttons" type="submit" value="Create New List">
 </a>
 </p>
 
 
 <p>
 <form action="/logout" method="POST">
-<input id="hidden" type="hidden" name="_method" value="delete">
-<input class="games_selection_buttons" type="submit" value="Logout">
+<input class="hidden" type="hidden" name="_method" value="delete">
+<input class="login_buttons" type="submit" value="Logout">
 </form>
+</div>
 </p>
 
 
