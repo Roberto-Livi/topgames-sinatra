@@ -32,6 +32,10 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  get '/testing' do
+    erb :"/testing"
+  end
+
   delete '/logout' do
     if Helpers.is_logged_in?(session)
       session.clear
