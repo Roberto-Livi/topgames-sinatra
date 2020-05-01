@@ -35,6 +35,7 @@ end
 post '/new_games_list' do
   params.each do |key, value|
     if value.empty?
+      flash[:new_list_error] = "One or more fields were empty"
       redirect "/new_games_list"
     end
   end
@@ -76,6 +77,7 @@ patch '/users_games_selection/:id' do
   games = Game.find(params[:id])
   params.each do |key, value|
     if value.empty?
+      flash[:update_error] = "One or more fields were empty"
       redirect "/games/#{games.id}/update"
     end
   end

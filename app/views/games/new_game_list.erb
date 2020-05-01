@@ -47,6 +47,14 @@
 <br>
 </div>
 
+<p></p>
+<div style="text-align: center; color: red;">
+<% if flash.has?(:new_list_error) %>
+<%= flash[:new_list_error]  %>
+<% end %>
+</div>
+<p></p>
+
 <div style="text-align: center;">
 <input id="update_list_button" type="submit" value="Submit">
 </div>

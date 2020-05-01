@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   post '/signup' do
     params.each do |key, value|
       if value.empty?
+        flash[:sign_up_error] = "One or more sections were empty"
         redirect "/signup"
       end
     end
@@ -45,6 +46,7 @@ class UsersController < ApplicationController
 
         redirect "/users_games_selection/#{g.id}"
       else
+        flash[:login_error] = "Wrong username or password"
         redirect "/login"
       end
     end
