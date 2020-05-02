@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     user = User.create(:username => params[:username], :email => params[:email], :password => params[:password])
     session[:user_id] = user.id
 
-    redirect "/select_games"
+    redirect "/users_games_selection/#{user.id}"
   end
 
     get '/login' do
