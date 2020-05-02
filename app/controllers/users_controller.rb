@@ -39,17 +39,10 @@ class UsersController < ApplicationController
     post '/login' do
       user = User.find_by(:username => params[:username])
 
-      if user && user.authenticate(params[:password]) && user.games.empty?
+      if user && user.authenticate(params[:password])
         session[:user_id] = user.id
 
-        erb :"/games/register_fav_games"
-
-      elsif user && user.authenticate(params[:password])
-        session[:user_id] = user.id
-        g = Game.all.find {|game|
-          game.user_id == user.id}
-
-        redirect "/users_games_selection/#{g.id}"
+        redirect "/users_games_selection/#{user.id}"
       else
         flash[:login_error] = "Wrong username or password"
         redirect "/login"
