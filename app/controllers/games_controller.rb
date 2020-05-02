@@ -13,6 +13,7 @@ end
 post '/select_games' do
 
 @user = Helpers.current_user(session)
+params[:user_id] = @user.id
 
   params.each do |key, value|
     if value.empty?
