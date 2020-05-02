@@ -55,6 +55,13 @@
 <br>
 
 <p></p>
+<div style="text-align: center; color: red;">
+<% if flash.has?(:post_error) %>
+<%= flash[:post_error] %>
+<% end %>
+</div>
+
+<p></p>
 
 <p>
 <div style="text-align: center;">

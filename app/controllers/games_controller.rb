@@ -1,8 +1,8 @@
 class GamesController < ApplicationController
 
 get '/select_games' do
-  @user = User.find_by(:username => params[:username])
 
+@user = User.find_by(:username => params[:username])
   if Helpers.is_logged_in?(session)
     erb :"/games/register_fav_games"
   else
@@ -12,15 +12,17 @@ end
 
 post '/select_games' do
 
-user = Helpers.current_user(session)
-params[:user_id] = user.id
-  if params[:first_game].empty? && params[:second_game].empty? && params[:third_game].empty? && params[:fourth_game].empty? && params[:fifth_game].empty? && params[:list_name].empty?
+@user = Helpers.current_user(session)
 
-  redirect "/select_games"
-  else
+  params.each do |key, value|
+    if value.empty?
+        flash[:post_error] = "Post couldn't be created. One or more fields were empty"
+        redirect "/users_games_selection/#{@user.id}"
+    else
       game = Game.create(:first_game => params[:first_game], :second_game => params[:second_game], :third_game => params[:third_game], :fourth_game => params[:fourth_game], :fifth_game => params[:fifth_game], :user_id => params[:user_id], :list_name => params[:list_name])
 
-      redirect "/users_games_selection/#{user.id}"
+      redirect "/users_games_selection/#{@user.id}"
+    end
   end
 end
 
