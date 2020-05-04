@@ -9,3 +9,7 @@ Their post will also be posted on the index page where you can see all the users
 # Getting Started
 
 To get started, you can clone this repo on your ide and run bundle install. After that, all you need to do is run shotgun and paste the route that is given to you to the web browser.
+
+# Built With
+
+- Visual Studio Code
