@@ -12,4 +12,7 @@ To get started, you can clone this repo on your ide and run bundle install. Afte
 
 # Built With
 
-- Visual Studio Code
+- Ruby
+- Sinatra
+- ActiveRecord
+- Sqlite3

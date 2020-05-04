@@ -1,62 +1,64 @@
 <div class="games_headline">
-<h1>Create a New List</h1>
+
+    <h1>Create a New List</h1>
+
 </div>
 
 <div id="games_text">
 <form action="/new_games_list" method="POST">
 
-<p></p>
-<p>
-<label><strong>List Name</strong><label>
-<br>
-<input type="text" name="list_name">
-</p>
+    <p></p>
+    <p>
+    <label><strong>List Name</strong><label>
+    <br>
+    <input type="text" name="list_name">
+    </p>
 
-<br>
+    <br>
 
-<p>
-<label>1)</label>
-<input type="text" name="first_game">
-</p>
-<br>
+    <p>
+    <label>1)</label>
+    <input type="text" name="first_game">
+    </p>
+    <br>
 
-<p>
-<label>2)</label>
-<input type="text" name="second_game">
-</p>
-<br>
+    <p>
+    <label>2)</label>
+    <input type="text" name="second_game">
+    </p>
+    <br>
 
-<p>
-<label>3)</label>
-<input type="text" name="third_game">
-</p>
-<br>
+    <p>
+    <label>3)</label>
+    <input type="text" name="third_game">
+    </p>
+    <br>
 
 
-<p>
-<label>4)</label>
-<input type="text" name="fourth_game">
-</p>
-<br>
+    <p>
+    <label>4)</label>
+    <input type="text" name="fourth_game">
+    </p>
+    <br>
 
-<p>
-<label>5)</label>
-<input type="text" name="fifth_game">
-</p>
-<br>
-<br>
-</div>
+    <p>
+    <label>5)</label>
+    <input type="text" name="fifth_game">
+    </p>
+    <br>
+    <br>
+    </div>
 
-<p></p>
-<div style="text-align: center; color: red;">
-<% if flash.has?(:new_list_error) %>
-<%= flash[:new_list_error]  %>
-<% end %>
-</div>
-<p></p>
+    <p></p>
+    <div style="text-align: center; color: red;">
+    <% if flash.has?(:new_list_error) %>
+    <%= flash[:new_list_error]  %>
+    <% end %>
+    </div>
+    <p></p>
 
-<div style="text-align: center;">
-<input id="update_list_button" type="submit" value="Submit">
-</div>
+    <div style="text-align: center;">
+    <input id="update_list_button" type="submit" value="Submit">
+    </div>
 
 </form>

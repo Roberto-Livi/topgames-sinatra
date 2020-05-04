@@ -8,35 +8,35 @@
 <div style="text-align: center;">
 <form action="/signup" method="POST">
 
+    <game>Username</game>
+    <br>
+    <input type="text" name="username">
+    <br>
+    <p></p>
 
-<game>Username</game>
-<br>
-<input type="text" name="username">
-<br>
-<p></p>
+    <label>Email</label>
+    <br>
+    <input type="text" name="email">
+    <br>
+    <p></p>
 
-<label>Email</label>
-<br>
-<input type="text" name="email">
-<br>
-<p></p>
+    <label>Password</label>
+    <br>
+    <input type="password" name="password">
+    <br>
 
-<label>Password</label>
-<br>
-<input type="text" name="password">
-<br>
+    <p></p>
+    <div style="color: red;">
+    <% if flash.has?(:sign_up_error) %>
+    <%= flash[:sign_up_error] %>
+    <% end %>
+    </div>
 
-<p></p>
-<div style="color: red;">
-<% if flash.has?(:sign_up_error) %>
-<%= flash[:sign_up_error] %>
-<% end %>
-</div>
+    <p></p>
+    <p>
+    <input class="sign_up_buttons" type="submit" value="Submit">
+    </p>
 
-<p></p>
-<p>
-<input class="sign_up_buttons" type="submit" value="Submit">
-</p>
 </form>
 
 <p>

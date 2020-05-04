@@ -19,6 +19,10 @@ class UsersController < ApplicationController
       end
     end
 
+    if User.find_by(:username => params[:username])
+      redirect "/signup"
+    end
+
     user = User.create(:username => params[:username], :email => params[:email], :password => params[:password])
     session[:user_id] = user.id
 
